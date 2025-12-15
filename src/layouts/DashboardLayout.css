@@ -1,0 +1,346 @@
+/* src/layouts/DashboardLayout.css */
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f6f9; /* Fondo gris claro */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden; /* Evita scroll en la ventana principal */
+}
+
+/* --- SIDEBAR IZQUIERDO --- */
+.sidebar {
+  width: 260px;
+  overflow-x: hidden; 
+    overflow-y: auto;
+  background: #1e3c72; /* Azul fuerte corporativo */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  z-index: 20;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+}
+
+/* Encabezado del Menú (Centrado) */
+.sidebar-header {
+  padding: 10px 0; /* De 20px 25px a 10px 0 */
+    text-align: center;
+  height: 80px; /* Misma altura que el navbar superior */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 🔥 CENTRADO HORIZONTAL */
+  background: rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sidebar-header h2 {
+  color: white !important;
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Navegación */
+.sidebar-nav {
+    flex-grow: 1;
+    overflow-y: auto; /* Mantenemos el auto, pero ahora no debería ser necesario */
+    padding: 10px 0; /* Pequeño ajuste en padding vertical */
+}
+.nav-divider {
+    /* 🔥 AJUSTE: Menos margen y fuente más pequeña */
+    color: #8da4b6;
+    font-size: 0.75rem; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 25px;
+    margin: 8px 0; /* Reducimos el margen vertical */
+}
+
+.nav-link {
+    /* Mantenemos el padding ajustado que hicimos antes */
+    padding: 10px 25px; 
+    font-size: 0.9rem; 
+    
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #b3cde0;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s; /* 🔥 Añadimos box-shadow a la transición */
+    
+    /* Mantenemos un borde transparente para la línea activa */
+    border-left: 5px solid transparent; 
+}
+
+.nav-link:hover {
+    background: rgba(255, 255, 255, 0.1); /* Fondo sutil */
+    color: white;
+    
+    /* Usamos una SOMBRA INTERNA (inset) para dar un efecto de profundidad/brillo 
+       sin afectar el ancho total del elemento, eliminando el scroll horizontal. */
+    box-shadow: inset 5px 0 0 0 #a9d4f4; /* Línea de brillo interna */
+    
+    /* 🔥 Aseguramos que el overflow sea HIDDEN en el sidebar por si acaso */
+    /* Este es el seguro, pero la sombra ya debería bastar: */
+}
+
+.nav-link.active {
+  background: white;
+  color: #1e3c72;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.icon { margin-right: 12px; font-size: 1.1rem; }
+
+/* Footer del Sidebar */
+.sidebar-footer {
+  padding: 20px;
+  background: rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.logout-btn-sidebar {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #ff8a80; /* Rojo suave */
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.logout-btn-sidebar:hover {
+  background: rgba(255, 107, 107, 0.1);
+  color: #ff5252;
+  border-color: #ff5252;
+}
+
+
+/* --- ZONA DERECHA (CONTENIDO) --- */
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- BARRA SUPERIOR (TOP NAVBAR) --- */
+.top-navbar {
+  height: 80px;
+  background: white; /* Blanco para resaltar el logo */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+  z-index: 10;
+}
+
+.top-logo {
+  height: 50px; /* Tamaño ideal */
+  width: auto;
+  object-fit: contain;
+}
+
+/* Área de Usuario (Derecha) */
+.user-area {
+  display: flex;
+  align-items: center;
+}
+
+.profile-pill {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 8px 15px 8px 10px;
+  border-radius: 50px;
+  text-decoration: none;
+  color: #333;
+  border: 1px solid #e0e0e0;
+  transition: all 0.2s ease;
+}
+
+.profile-pill:hover {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-color: #1e3c72;
+}
+
+.profile-icon {
+  font-size: 2.2rem;
+  color: #1e3c72;
+  margin-right: 12px;
+}
+
+.profile-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #2c3e50;
+  display: block;
+}
+
+.profile-role.badge {
+  background: #ffc107;
+  color: #333;
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+
+/* --- CONTENIDO PRINCIPAL SCROLLEABLE --- */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px 40px;
+}
+
+/* Tarjeta Blanca Genérica para las Vistas */
+.main-content > div {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  min-height: calc(100vh - 160px); /* Ocupa el resto de pantalla */
+}
+
+/* Estilos de Tablas y Botones Genéricos */
+.page-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  background: #f8f9fa;
+  padding: 15px;
+  text-align: left;
+  color: #666;
+  font-weight: 700;
+  border-bottom: 2px solid #eee;
+}
+
+.data-table td {
+  padding: 15px;
+  border-bottom: 1px solid #f1f1f1;
+  color: #444;
+}
+
+.data-table tr:hover {
+  background-color: #fafafa;
+}
+
+.btn-primary {
+  background: #1e3c72;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover {
+  background: #162d55;
+}
+/* Estilos para botones de filtro */
+.btn-filter {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.btn-filter:hover {
+    filter: brightness(0.95);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Estilos de botones de acción en tabla */
+.action-btn {
+    padding: 6px 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+.btn-edit { background: #007bff; }
+.btn-delete { background: #dc3545; }
+/* --- NUEVAS CLASES PARA EL CONTROL DE CAJA EN SIDEBAR --- */
+.cash-control-area {
+    padding: 10px 15px; /* Reducimos el padding superior/inferior */
+    border-top: 1px solid #3d5a80; 
+    margin-top: auto; 
+}
+
+.btn-open-cash-sidebar, .btn-close-cash-sidebar {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Estado: Cerrada -> Quiero Abrir (Verde/Azul) */
+.btn-open-cash-sidebar {
+    background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+    color: white;
+}
+
+/* Estado: Abierta -> Quiero Cerrar (Amarillo/Rojo Precaución) */
+.btn-close-cash-sidebar {
+    background: linear-gradient(135deg, #ffc107 0%, #ffca2c 100%);
+    color: #333;
+}
+
+.btn-open-cash-sidebar:hover, .btn-close-cash-sidebar:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Ajuste para que el botón de Cerrar Sesión quede abajo */
+.sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid #3d5a80; 
+}

@@ -1,0 +1,116 @@
+/* src/pages/Login.css */
+
+/* Reset básico para asegurar que ocupe toda la pantalla */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif; /* Usamos Roboto */
+}
+
+/* Contenedor Principal: Fondo degradado Azul -> Morado */
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #764ba2 100%);
+  background-size: cover;
+}
+
+/* La tarjeta del formulario */
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Animación de entrada suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilo del Logo */
+.login-logo {
+  width: 350px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.login-title {
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+/* Estilo de los Inputs (Cajas de texto) */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box; /* Para que el padding no rompa el ancho */
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #2a5298;
+  box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+}
+
+/* Botón Moderno */
+.login-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(to right, #2a5298, #1e3c72);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 10px;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(30, 60, 114, 0.3);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+/* Mensaje de error */
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  border: 1px solid #ef9a9a;
+}

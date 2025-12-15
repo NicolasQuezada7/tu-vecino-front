@@ -1,0 +1,24 @@
+/* Forzamos el color con !important por si algo lo está pisando */
+.total-display {
+  background-color: #1e3c72 !important; /* Fondo Azul */
+  color: white !important;              /* Texto Blanco */
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.total-display h3 {
+  color: #e0e0e0 !important; /* "Total a Pagar" en gris muy claro */
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+}
+
+.total-display .amount {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 800; /* Letra bien gruesa */
+  color: #ffffff !important; /* BLANCO PURO */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

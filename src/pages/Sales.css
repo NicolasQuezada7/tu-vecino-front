@@ -1,0 +1,439 @@
+/* src/pages/Sales.css */
+
+/* --- LAYOUT PRINCIPAL --- */
+.pos-container {
+  display: flex;
+  gap: 20px;
+  height: calc(100vh - 100px); /* Altura total menos el header */
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* --- SECCIÓN IZQUIERDA: PRODUCTOS Y CARRITO --- */
+.pos-left-panel {
+  flex: 2; /* Ocupa el 66% del ancho */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Barra de Búsqueda */
+.search-bar-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  border-left: 5px solid #2a5298;
+}
+
+.search-icon {
+  font-size: 1.5rem;
+  color: #2a5298;
+  margin-right: 15px;
+}
+
+.pos-input {
+  border: none;
+  font-size: 1.2rem;
+  width: 100%;
+  outline: none;
+  font-weight: 500;
+  color: #333;
+}
+
+.pos-input::placeholder { color: #ccc; }
+
+/* Resultados de búsqueda (Flotante) */
+.search-results {
+  position: absolute;
+  top: 160px; /* Ajustado para quedar bajo la barra */
+  left: 290px; 
+  width: 45%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  z-index: 100;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.search-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.search-item:hover { background: #f0f7ff; }
+
+/* Lista de Productos (Carrito) */
+.cart-list-container {
+  background: white;
+  flex: 1; /* Ocupa el espacio restante */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-table th {
+  text-align: left;
+  padding: 15px;
+  color: #888;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-table td {
+  padding: 15px;
+  border-bottom: 1px solid #f9f9f9;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.qty-badge {
+  background: #e3f2fd;
+  color: #1565c0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* --- SECCIÓN DERECHA: PAGO --- */
+.pos-right-panel {
+  flex: 1; /* Ocupa el 33% del ancho */
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.payment-header {
+  margin-bottom: 20px;
+}
+
+.total-display {
+  background: #2a5298;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(42, 82, 152, 0.3);
+}
+
+.total-label { font-size: 0.8rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+.total-amount { font-size: 2.2rem; font-weight: bold; margin: 5px 0 0 0; }
+
+/* Métodos de Pago (CORREGIDO PARA NOMBRES LARGOS) */
+.payment-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 Columnas para dar espacio */
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.method-btn {
+  background: #f8f9fa;
+  border: 2px solid transparent;
+  padding: 12px 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: #555;
+  font-size: 0.85rem; /* Tamaño ajustado */
+  font-weight: 600;
+}
+
+.method-btn:hover { background: #e9ecef; }
+.method-btn.active {
+  border-color: #2a5298;
+  background: #e3f2fd;
+  color: #2a5298;
+}
+
+.method-icon { font-size: 1.4rem; margin-bottom: 5px; }
+
+/* Detalles del Pago */
+.payment-details {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  flex: 1;
+  border: 1px dashed #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cash-input-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+.cash-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.change-display {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+  font-weight: bold;
+}
+
+.change-positive { color: #28a745; }
+.change-negative { color: #dc3545; }
+
+.info-box {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.transfer-data p { margin: 5px 0; font-size: 0.9rem; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+.transfer-data strong { color: #333; }
+
+/* Botón Final */
+.finish-sale-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+  transition: transform 0.2s;
+}
+
+.finish-sale-btn:hover { transform: translateY(-2px); background: #218838; }
+.finish-sale-btn:disabled { background: #ccc; cursor: not-allowed; box-shadow: none; transform: none; }
+
+/* --- BOLETA FLOTANTE (MODAL DEFINITIVO) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.7); /* Oscuro para resaltar la boleta */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000; /* Siempre encima */
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.receipt-card {
+  background: #fff;
+  width: 360px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+  
+  /* Efecto Borde Dentado (Ticket) */
+  background-image: linear-gradient(135deg, #fff 50%, transparent 50%),
+                    linear-gradient(225deg, #fff 50%, transparent 50%);
+  background-position: top;
+  background-size: 20px 20px;
+  background-repeat: repeat-x;
+  margin-top: -10px;
+}
+
+.receipt-header {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.receipt-logo {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+.receipt-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.dashed-line {
+  border-bottom: 2px dashed #333;
+  margin: 15px 0;
+  opacity: 0.5;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.receipt-total {
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-align: right;
+  margin-top: 20px;
+  border-top: 2px solid #000;
+  padding-top: 10px;
+}
+
+.btn-close-receipt {
+  width: 100%;
+  background: #2a5298;
+  color: white;
+  border: none;
+  padding: 12px;
+  margin-top: 25px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn-close-receipt:hover { background: #1e3c72; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* src/pages/Sales.css */
+
+.total-display {
+  background: #2a5298;
+  color: white !important; /* 🔥 FORZAR BLANCO AQUÍ */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(42, 82, 152, 0.3);
+}
+
+.total-amount {
+  font-size: 2.2rem;
+  font-weight: 900; /* Más gruesa */
+  margin: 5px 0 0 0;
+  color: #ffffff !important; /* 🔥 BLANCO PURO OBLIGATORIO */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombrita para que resalte */
+}
+
+.total-label {
+  font-size: 0.9rem;
+  opacity: 1; /* Quitar transparencia */
+  color: #e3f2fd !important; /* Azul muy clarito */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+/* BOTÓN DE CONTROL DE CAJA */
+.btn-open-cash, .btn-close-cash {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-transform: uppercase;
+}
+
+/* Estado: Cerrada -> Quiero Abrir (Verde/Azul) */
+.btn-open-cash {
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+  color: white;
+  box-shadow: 0 4px 6px rgba(40, 167, 69, 0.3);
+}
+
+/* Estado: Abierta -> Quiero Cerrar (Amarillo/Rojo Precaución) */
+.btn-close-cash {
+  background: linear-gradient(135deg, #ffc107 0%, #ffca2c 100%);
+  color: #333;
+  box-shadow: 0 4px 6px rgba(255, 193, 7, 0.3);
+}
+
+.btn-open-cash:hover, .btn-close-cash:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+/* --- FIX PARA EL SCROLL DEL PANEL DERECHO --- */
+.pos-right-panel {
+    /* [A] OJO: Quitamos padding del padre para que los hijos fijos lo manejen */
+    padding: 0; 
+    
+    /* [B] Habilitamos la estructura de columna y altura completa */
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    
+    /* [C] Añadimos un padding interno para el contenido principal */
+    background: #fcfcfc; /* Un color ligeramente diferente al fondo */
+}
+
+/* 1. Área Superior Fija (Caja y Total) */
+.pos-top-fixed {
+    flex-shrink: 0; /* No se encoge */
+    padding: 25px; /* Padding que tenía el padre */
+    padding-bottom: 5px; /* Menos abajo para el separador */
+    background: white;
+}
+
+/* 2. Área Central Scrolleable (Métodos de Pago) */
+.pos-payment-scroll {
+    flex-grow: 1; /* Ocupa todo el espacio restante */
+    overflow-y: auto; /* Habilitamos el scroll aquí */
+    padding: 0 25px; /* Padding horizontal */
+    padding-top: 20px;
+    /* Necesitas que el .payment-details (donde va el cash input) tenga flex: 1 si quieres que se centre. Lo quitamos de .payment-details. */
+}
+
+/* 3. Área Inferior Fija (Botón de Confirmar) */
+.pos-bottom-fixed {
+    flex-shrink: 0; /* No se encoge */
+    padding: 15px 25px; /* Padding que tenía el padre */
+    border-top: 1px solid #eee;
+    background: white;
+    box-shadow: 0 -5px 10px rgba(0,0,0,0.03);
+}
+
+/* AJUSTE PARA EL BOTÓN DENTRO DEL NUEVO CONTENEDOR */
+.finish-sale-btn {
+    margin-top: 0; /* Quitamos el margin-top porque ya está en el padding del padre */
+}
+
+/* AJUSTE para que el Total Display se vea bien */
+.total-display {
+    margin-bottom: 10px; /* Reducimos el margen inferior */
+}
